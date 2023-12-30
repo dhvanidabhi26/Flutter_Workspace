@@ -2,7 +2,8 @@ void main()
 {
   int marks = 60;
 
-  if (marks>= 70) {
+  if (marks>= 70) 
+  {
     print(" A Grade");
   }
   else if (marks>= 60)
