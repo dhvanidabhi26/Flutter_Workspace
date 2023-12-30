@@ -1,6 +1,7 @@
 import 'dart:io';
 
-void main() {
+void main() 
+{
   print("Your Maths Marks is");
   int maths = int.parse(stdin.readLineSync().toString());
 
