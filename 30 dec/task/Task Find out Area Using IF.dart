@@ -1,5 +1,7 @@
 import 'dart:io';
-void main() {
+
+void main()
+{
   print("Enter Any number");
   int num = int.parse(stdin.readLineSync().toString());
 
@@ -14,6 +16,7 @@ void main() {
     double areat = 0.5 * base * height;
     print("Area of Triangle is : $areat");
   }
+
   else if (num == 2)
     {
       print("Area of Rectangle");
@@ -25,6 +28,7 @@ void main() {
       var arear = breadth*length;
       print("Area of Rectangle is : $arear");
     }
+
   else if (num == 3)
     {
       print("Area of Circle");
@@ -35,6 +39,7 @@ void main() {
       var areac = PI*radius*radius;
       print ("Area of Circle is : $areac");
     }
+ 
   else
     {
       print("The Number doesn't Exit");
