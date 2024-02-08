@@ -64,7 +64,7 @@ B16. Are constructors and initializers also inherited to sub classes?
 of any interfaces it implements.
 
 38. How do you prevent overriding a Dart method without using the final modifier?
-=>
+=>using the super keyword in the subclass.
 
 39. What are the rules of method overriding in Dart?
 =>The rules of method overriding in Dart is following:
