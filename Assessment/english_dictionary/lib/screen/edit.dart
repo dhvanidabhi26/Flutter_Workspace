@@ -1,4 +1,5 @@
 import 'package:english_dictionary/Database/Dbhelper.dart';
+import 'package:english_dictionary/widgets/color.dart';
 import 'package:flutter/material.dart';
 
 class EditStudents extends StatefulWidget {
@@ -88,7 +89,7 @@ class EditState extends State<EditStudents> {
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue, // Text color
+                  backgroundColor: kBrown, // Text color
                   shadowColor: Colors.black, // Shadow color
                   elevation: 5, // Elevation
                   shape: RoundedRectangleBorder(

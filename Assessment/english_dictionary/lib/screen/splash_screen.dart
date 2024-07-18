@@ -17,14 +17,14 @@ class _splash_screenState extends State<splash_screen>
     // TODO: implement initState
     super.initState();
 
-    Timer(Duration(seconds: 2),()=> Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Home_Page())));
+    Timer(Duration(seconds: 2),()=> Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen())));
   }
   Widget build(BuildContext context)
   {
     return Scaffold
       (
         body: Center(
-          child: Image.asset("images/background_image1.jpg",
+          child: Image.asset("images/animation.jpg",
             height:double.infinity,
             width:double.infinity,),
         ),

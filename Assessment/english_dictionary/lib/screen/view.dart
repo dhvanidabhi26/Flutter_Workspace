@@ -31,7 +31,6 @@ class ViewDetailsState extends State<ViewDetails>
   @override
   Widget build(BuildContext context)
   {
-
     return Scaffold(
 
       appBar: AppBar(
@@ -115,7 +114,7 @@ class ViewDetailsState extends State<ViewDetails>
       floatingActionButton: FloatingActionButton(
         onPressed: ()
         {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Home_Page()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
         },
         child: Icon(Icons.add),
       ),

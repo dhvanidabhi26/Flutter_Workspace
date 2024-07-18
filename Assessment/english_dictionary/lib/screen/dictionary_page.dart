@@ -7,12 +7,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'view.dart';
 
-class Home_Page extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  Home_PageState createState() => Home_PageState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class Home_PageState extends State<Home_Page> {
+class HomeScreenState extends State<HomeScreen> {
   final FlutterTts flutterTts = FlutterTts();
   final TextEditingController wordController = TextEditingController();
   final TextEditingController meaningController = TextEditingController();
@@ -31,17 +33,96 @@ class Home_PageState extends State<Home_Page> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Own Dictionary", style: TextStyle(color: Colors.white)),
+        automaticallyImplyLeading: false,
+        title:
+        const Text("Own Dictionary", style: TextStyle(color: Colors.white)),
         backgroundColor: kBrown,
       ),
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         color: kLightBrown, // Set background color of the body
         child: Form(
           key: _formKey,
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Text(
+          Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            SizedBox(
+              height: 150,
+              child: CarouselSlider(
+                items: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images01.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images02.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images03.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images04.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images05.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage("images/images06.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+                options: CarouselOptions(
+                  height: 150.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.easeInQuad,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
+            const Text(
               "Add a Word",
               style: TextStyle(
                   color: white, fontSize: 20, fontWeight: FontWeight.bold),
@@ -52,18 +133,21 @@ class Home_PageState extends State<Home_Page> {
                   onPressed: () {
                     speak(wordController.text);
                   },
-                  icon: Icon(Icons.volume_up, color: white),
+                  icon: const Icon(Icons.volume_up, color: white),
                 ),
                 SizedBox(
                   height: 100,
                   width: 200,
                   child: TextFormField(
                     controller: wordController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Word',
                       hintText: 'Enter a Word',
                       labelStyle: TextStyle(color: white),
                       enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: white),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: white),
                       ),
                     ),
@@ -80,7 +164,7 @@ class Home_PageState extends State<Home_Page> {
                   onPressed: () {
                     wordController.clear();
                   },
-                  icon: Icon(Icons.highlight_remove, color: white),
+                  icon: const Icon(Icons.highlight_remove, color: white),
                 ),
               ],
             ),
@@ -90,17 +174,20 @@ class Home_PageState extends State<Home_Page> {
                   onPressed: () {
                     speak1(meaningController.text);
                   },
-                  icon: Icon(Icons.volume_up, color: white),
+                  icon: const Icon(Icons.volume_up, color: white),
                 ),
                 SizedBox(
                   height: 100,
                   width: 200,
                   child: TextFormField(
                     controller: meaningController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Meaning',
                       labelStyle: TextStyle(color: white),
                       enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: white),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: white),
                       ),
                     ),
@@ -117,7 +204,7 @@ class Home_PageState extends State<Home_Page> {
                   onPressed: () {
                     meaningController.clear();
                   },
-                  icon: Icon(Icons.highlight_remove, color: white),
+                  icon: const Icon(Icons.highlight_remove, color: white),
                 ),
               ],
             ),
@@ -134,23 +221,24 @@ class Home_PageState extends State<Home_Page> {
                           [wordController.text, meaningController.text],
                         );
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Word Added Successfully")),
+                          const SnackBar(
+                              content: Text("Word Added Successfully")),
                         );
                         wordController.clear();
                         meaningController.clear();
                       }
                     },
-                    child: Text("Add Word"),
+                    child: const Text("Add Word"),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: kBlueGrey,
+                      backgroundColor: kBrown,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 SizedBox(
                   height: 50,
                   width: 140,
@@ -161,10 +249,10 @@ class Home_PageState extends State<Home_Page> {
                         MaterialPageRoute(builder: (context) => ViewDetails()),
                       );
                     },
-                    child: Text("View Dictionary"),
+                    child: Text("View Word"),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: kBlueGrey,
+                      backgroundColor: kBrown,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -173,11 +261,11 @@ class Home_PageState extends State<Home_Page> {
                 ),
               ],
             ),
-            SizedBox(height: 20, width: 10),
+            const SizedBox(height: 20, width: 10),
             Column(
               children: [
                 SizedBox(
-                  height: 40,
+                  height: 50,
                   width: 160,
                   child: ElevatedButton.icon(
                     onPressed: () {
@@ -185,7 +273,7 @@ class Home_PageState extends State<Home_Page> {
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: kBlueGrey,
+                      backgroundColor: kBrown,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -196,53 +284,6 @@ class Home_PageState extends State<Home_Page> {
                 ),
               ],
             ),
-            SizedBox(height: 40),
-            SizedBox(
-              height: 150,
-              child: CarouselSlider(
-                items: [
-                  Container(
-                    margin: EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: DecorationImage(
-                        image: AssetImage("images/background_image.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: DecorationImage(
-                        image: AssetImage("images/images11.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: DecorationImage(
-                        image: AssetImage("images/images12.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-                options: CarouselOptions(
-                  height: 150.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.easeInQuad,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 1000),
-                ),
-              ),
-            )
           ]),
         ),
       ),
@@ -257,13 +298,14 @@ class Home_PageState extends State<Home_Page> {
     await flutterTts.speak(meaning);
   }
 
-  void websitelaunch() async {
-    const url = 'https://www.google.co.in/';
-    if (await canLaunchUrl(Uri.parse(url)))
-    {
-      await launchUrl(Uri.parse(url), );
-    } else
-    {
+  void websitelaunch() async
+  {
+    const url = 'https://translate.google.co.in/?sl=auto&tl=en&op=translate';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(
+        Uri.parse(url),
+      );
+    } else {
       throw 'Could not launch $url';
     }
   }
